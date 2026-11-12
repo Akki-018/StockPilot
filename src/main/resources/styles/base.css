@@ -456,6 +456,16 @@
     -fx-border-width: 0;
 }
 
+.btn-stock-in, .btn-stock-out {
+    -fx-padding: 8 16 8 16;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-cursor: hand;
+    -fx-border-width: 0;
+}
+
 .btn-secondary {
     -fx-padding: 8 14 8 14;
     -fx-font-size: 12px;

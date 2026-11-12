@@ -448,6 +448,8 @@ public class ProductController {
                 } else {
                     showNotification("Could not delete product. Record may not exist.", false);
                 }
+            } catch (IllegalStateException e) {
+                showNotification("Integrity Protection: " + e.getMessage(), false);
             } catch (SQLException e) {
                 showNotification("Database Error: Unable to delete product: " + e.getMessage(), false);
             }

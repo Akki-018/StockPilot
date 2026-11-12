@@ -5,21 +5,25 @@ import com.stockpilot.model.CategoryStock;
 import com.stockpilot.model.DailyMovement;
 import com.stockpilot.model.DashboardSummary;
 import com.stockpilot.model.InventoryHealth;
+import com.stockpilot.model.Transaction;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Data access object providing dashboard metrics, category distributions,
- * and movement analytics.
- * Product metrics, category distributions, and health indicators query live SQLite records.
+ * movement trends, and activity logs.
+ * All metrics, charts, and activity feeds query real SQLite database records.
  */
 public class DashboardDao {
 
     private final ProductDao productDao;
+    private final TransactionDao transactionDao;
 
     public DashboardDao() {
         this.productDao = new ProductDao();
+        this.transactionDao = new TransactionDao();
     }
 
     /**
@@ -60,33 +64,29 @@ public class DashboardDao {
     }
 
     /**
-     * Seven-day stock movement history.
-     * DEMO DATASET: Inbound vs outbound velocity demonstration trend
-     * until the comprehensive transaction recording engine is introduced in Stage 3.
+     * Seven-day stock movement history queried directly from SQLite transactions table.
      */
     public List<DailyMovement> fetchStockMovements() {
-        return List.of(
-                new DailyMovement("Nov 07", 42, 28),
-                new DailyMovement("Nov 08", 65, 35),
-                new DailyMovement("Nov 09", 30, 52),
-                new DailyMovement("Nov 10", 85, 40),
-                new DailyMovement("Nov 11", 25, 60),
-                new DailyMovement("Nov 12", 70, 45),
-                new DailyMovement("Nov 13", 45, 30)
-        );
+        return transactionDao.fetch7DayMovementSummary();
     }
 
     /**
-     * Recent inventory activity events.
-     * DEMO DATASET: Initial ledger log entries.
+     * Recent inventory activity events queried directly from SQLite transactions table.
      */
     public List<ActivityItem> fetchRecentActivity() {
-        return List.of(
-                new ActivityItem("Today, 09:42 AM", "Stock In", "USB-C Docking Station", "+45 units", "Completed"),
-                new ActivityItem("Today, 09:15 AM", "Stock Out", "Ergonomic Wireless Mouse", "-18 units", "Completed"),
-                new ActivityItem("Yesterday, 05:30 PM", "Stock Alert", "27\" 4K IPS Color Monitor", "6 remaining", "Attention"),
-                new ActivityItem("Yesterday, 03:10 PM", "Stock Out", "Mechanical Keyboard (MX Brown)", "-12 units", "Completed"),
-                new ActivityItem("Yesterday, 11:05 AM", "Stock Alert", "Cat6 Shielded Patch Cable (5m)", "0 remaining", "Critical")
-        );
+        List<Transaction> recentTx = transactionDao.findRecent(5);
+        List<ActivityItem> activityItems = new ArrayList<>();
+
+        for (Transaction tx : recentTx) {
+            String time = tx.getTransactionDate();
+            String action = tx.isStockIn() ? "Stock In" : "Stock Out";
+            String itemDesc = tx.getProductName() + " (" + tx.getProductSku() + ")";
+            String delta = tx.getFormattedDelta();
+            String status = "Completed";
+
+            activityItems.add(new ActivityItem(time, action, itemDesc, delta, status));
+        }
+
+        return activityItems;
     }
 }

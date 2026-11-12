@@ -521,6 +521,24 @@
     -fx-background-color: #E29B70;
 }
 
+.btn-stock-in {
+    -fx-background-color: #387648;
+    -fx-text-fill: #FFFFFF;
+}
+
+.btn-stock-in:hover {
+    -fx-background-color: #428C56;
+}
+
+.btn-stock-out {
+    -fx-background-color: #D68A5D;
+    -fx-text-fill: #111310;
+}
+
+.btn-stock-out:hover {
+    -fx-background-color: #E29B70;
+}
+
 .btn-secondary {
     -fx-background-color: #202420;
     -fx-text-fill: #E6E7E3;

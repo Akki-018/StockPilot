@@ -1,6 +1,7 @@
 package com.stockpilot.service;
 
 import com.stockpilot.dao.ProductDao;
+import com.stockpilot.dao.TransactionDao;
 import com.stockpilot.model.CategoryStock;
 import com.stockpilot.model.Product;
 
@@ -16,13 +17,16 @@ import java.util.Optional;
 public class ProductService {
 
     private final ProductDao productDao;
+    private final TransactionDao transactionDao;
 
     public ProductService() {
         this.productDao = new ProductDao();
+        this.transactionDao = new TransactionDao();
     }
 
-    public ProductService(ProductDao productDao) {
+    public ProductService(ProductDao productDao, TransactionDao transactionDao) {
         this.productDao = productDao;
+        this.transactionDao = transactionDao;
     }
 
     public List<Product> getAllProducts() {
@@ -65,8 +69,12 @@ public class ProductService {
 
     /**
      * Deletes a product by ID.
+     * Enforces audit preservation: prevents deletion if historical transactions exist.
      */
     public boolean deleteProduct(int id) throws SQLException {
+        if (transactionDao.hasTransactionsForProduct(id)) {
+            throw new IllegalStateException("Cannot delete product: Historical transactions exist for this product. Inventory audit ledger must be preserved.");
+        }
         return productDao.delete(id);
     }
 
@@ -149,3 +157,4 @@ public class ProductService {
         return productDao.fetchCategoryStockSummary();
     }
 }
+

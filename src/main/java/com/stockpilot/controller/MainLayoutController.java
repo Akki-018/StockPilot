@@ -28,6 +28,7 @@ public class MainLayoutController {
     private final BorderPane rootLayout;
     private final DashboardController dashboardController;
     private final ProductController productController;
+    private final TransactionController transactionController;
     private final Map<String, Button> navigationButtons = new LinkedHashMap<>();
     private final Map<String, Supplier<Node>> viewFactories = new LinkedHashMap<>();
 
@@ -41,6 +42,7 @@ public class MainLayoutController {
         this.rootLayout.getStyleClass().add("app-root");
         this.dashboardController = new DashboardController();
         this.productController = new ProductController();
+        this.transactionController = new TransactionController();
 
         registerViews();
         rootLayout.setLeft(buildSidebar());
@@ -60,11 +62,7 @@ public class MainLayoutController {
     private void registerViews() {
         viewFactories.put("Dashboard", dashboardController::createView);
         viewFactories.put("Products", productController::createView);
-        viewFactories.put("Transactions", () -> ViewHelper.createPlaceholderView(
-                "Stock Transactions Ledger",
-                "PLANNED MODULE",
-                "Inbound receiving dock records, outbound order dispatches, stock adjustments, and multi-bin transfer logs will be managed here."
-        ));
+        viewFactories.put("Transactions", transactionController::createView);
         viewFactories.put("Suppliers", () -> ViewHelper.createPlaceholderView(
                 "Suppliers Directory",
                 "PLANNED MODULE",
