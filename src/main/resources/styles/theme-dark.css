@@ -4,6 +4,18 @@
     -fx-background-color: #191B19;
 }
 
+/* ==================== ScrollPane & ScrollBars ==================== */
+.dashboard-scroll-pane .scroll-bar:vertical .thumb,
+.dashboard-scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: #333833;
+    -fx-background-radius: 4;
+}
+
+.dashboard-scroll-pane .scroll-bar:vertical .thumb:hover,
+.dashboard-scroll-pane .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #454A45;
+}
+
 /* ==================== Sidebar ==================== */
 .sidebar {
     -fx-background-color: #111310;
@@ -74,7 +86,7 @@
 }
 
 .system-live-dot {
-    -fx-text-fill: #559E6B;
+    -fx-text-fill: #C9943E;
 }
 
 .sidebar-footer-title {
@@ -128,7 +140,7 @@
 }
 
 .station-dot {
-    -fx-text-fill: #4B9B64;
+    -fx-text-fill: #C9943E;
 }
 
 .station-text {
@@ -213,11 +225,6 @@
     -fx-text-fill: #A3A79E;
 }
 
-.live-status-pill {
-    -fx-background-color: #193020;
-    -fx-text-fill: #5BB876;
-}
-
 .section-footer {
     -fx-background-color: #202420;
     -fx-border-color: #2D322D;
@@ -229,6 +236,158 @@
 
 .footer-label-secondary {
     -fx-text-fill: #676A62;
+}
+
+/* ==================== Inventory Health Widget ==================== */
+.health-widget-title {
+    -fx-text-fill: #8E9189;
+}
+
+.health-percentage-badge {
+    -fx-text-fill: #5BB876;
+}
+
+.health-seg-healthy {
+    -fx-background-color: #529968;
+}
+
+.health-seg-low {
+    -fx-background-color: #C9943E;
+}
+
+.health-seg-out {
+    -fx-background-color: #CF584C;
+}
+
+.health-legend-healthy {
+    -fx-text-fill: #5BB876;
+}
+
+.health-legend-low {
+    -fx-text-fill: #DF9E38;
+}
+
+.health-legend-out {
+    -fx-text-fill: #E45B4D;
+}
+
+/* ==================== JavaFX Built-in Charts (Dark Industrial) ==================== */
+.chart-plot-background {
+    -fx-background-color: #202420;
+}
+
+.chart-title {
+    -fx-text-fill: #E6E7E3;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #C5C9C0;
+}
+
+.axis {
+    -fx-tick-label-fill: #8E9189;
+}
+
+.axis-label {
+    -fx-text-fill: #A0A49B;
+}
+
+.axis-tick-mark {
+    -fx-stroke: #333833;
+}
+
+.chart-vertical-grid-lines,
+.chart-horizontal-grid-lines {
+    -fx-stroke: #2E332E;
+}
+
+/* LineChart styling */
+.default-color0.chart-series-line {
+    -fx-stroke: #D68A5D;
+}
+
+.default-color1.chart-series-line {
+    -fx-stroke: #A2A69D;
+}
+
+.default-color0.chart-line-symbol {
+    -fx-background-color: #D68A5D, #252925;
+}
+
+.default-color1.chart-line-symbol {
+    -fx-background-color: #A2A69D, #252925;
+}
+
+.default-color0.chart-legend-item-symbol {
+    -fx-background-color: #D68A5D;
+}
+
+.default-color1.chart-legend-item-symbol {
+    -fx-background-color: #A2A69D;
+}
+
+/* BarChart styling */
+.default-color0.chart-bar {
+    -fx-bar-fill: #D68A5D;
+    -fx-background-color: #D68A5D;
+}
+
+/* PieChart styling: 5 harmonic architectural colors */
+.default-color0.chart-pie {
+    -fx-pie-color: #D68A5D;
+    -fx-border-color: #252925;
+}
+
+.default-color1.chart-pie {
+    -fx-pie-color: #529968;
+    -fx-border-color: #252925;
+}
+
+.default-color2.chart-pie {
+    -fx-pie-color: #8E9189;
+    -fx-border-color: #252925;
+}
+
+.default-color3.chart-pie {
+    -fx-pie-color: #B87B42;
+    -fx-border-color: #252925;
+}
+
+.default-color4.chart-pie {
+    -fx-pie-color: #585C54;
+    -fx-border-color: #252925;
+}
+
+.default-color0.chart-legend-item-symbol {
+    -fx-background-color: #D68A5D;
+}
+
+.default-color1.chart-legend-item-symbol {
+    -fx-background-color: #529968;
+}
+
+.default-color2.chart-legend-item-symbol {
+    -fx-background-color: #8E9189;
+}
+
+.default-color3.chart-legend-item-symbol {
+    -fx-background-color: #B87B42;
+}
+
+.default-color4.chart-legend-item-symbol {
+    -fx-background-color: #585C54;
+}
+
+.chart-pie-label {
+    -fx-fill: #A0A49B;
+}
+
+.chart-pie-label-line {
+    -fx-stroke: #3E433E;
 }
 
 /* ==================== Activity Table ==================== */

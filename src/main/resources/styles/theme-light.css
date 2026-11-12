@@ -1,7 +1,19 @@
-/* StockPilot Theme: Light Industrial (Warm Off-White, Charcoal, Burnt Orange Accent) */
+/* StockPilot Theme: Light Industrial (Warm Ivory, Charcoal, Burnt Orange Accent) */
 
 .app-root {
     -fx-background-color: #F5F4F0;
+}
+
+/* ==================== ScrollPane & ScrollBars ==================== */
+.dashboard-scroll-pane .scroll-bar:vertical .thumb,
+.dashboard-scroll-pane .scroll-bar:horizontal .thumb {
+    -fx-background-color: #DFDDD5;
+    -fx-background-radius: 4;
+}
+
+.dashboard-scroll-pane .scroll-bar:vertical .thumb:hover,
+.dashboard-scroll-pane .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #C5C3BB;
 }
 
 /* ==================== Sidebar ==================== */
@@ -74,7 +86,7 @@
 }
 
 .system-live-dot {
-    -fx-text-fill: #4B8A5E;
+    -fx-text-fill: #B37D28;
 }
 
 .sidebar-footer-title {
@@ -128,7 +140,7 @@
 }
 
 .station-dot {
-    -fx-text-fill: #3D7A50;
+    -fx-text-fill: #B37D28;
 }
 
 .station-text {
@@ -213,11 +225,6 @@
     -fx-text-fill: #5A5D54;
 }
 
-.live-status-pill {
-    -fx-background-color: #EBF3ED;
-    -fx-text-fill: #2B693E;
-}
-
 .section-footer {
     -fx-background-color: #FAF9F6;
     -fx-border-color: #E8E6DF;
@@ -229,6 +236,158 @@
 
 .footer-label-secondary {
     -fx-text-fill: #8E9187;
+}
+
+/* ==================== Inventory Health Widget ==================== */
+.health-widget-title {
+    -fx-text-fill: #777970;
+}
+
+.health-percentage-badge {
+    -fx-text-fill: #27683C;
+}
+
+.health-seg-healthy {
+    -fx-background-color: #448356;
+}
+
+.health-seg-low {
+    -fx-background-color: #B37D28;
+}
+
+.health-seg-out {
+    -fx-background-color: #BA3D30;
+}
+
+.health-legend-healthy {
+    -fx-text-fill: #27683C;
+}
+
+.health-legend-low {
+    -fx-text-fill: #94631B;
+}
+
+.health-legend-out {
+    -fx-text-fill: #A42E22;
+}
+
+/* ==================== JavaFX Built-in Charts (Light Industrial) ==================== */
+.chart-plot-background {
+    -fx-background-color: #FAF9F6;
+}
+
+.chart-title {
+    -fx-text-fill: #242522;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #474A42;
+}
+
+.axis {
+    -fx-tick-label-fill: #777970;
+}
+
+.axis-label {
+    -fx-text-fill: #5A5D55;
+}
+
+.axis-tick-mark {
+    -fx-stroke: #E3E1DA;
+}
+
+.chart-vertical-grid-lines,
+.chart-horizontal-grid-lines {
+    -fx-stroke: #EDEBE4;
+}
+
+/* LineChart styling */
+.default-color0.chart-series-line {
+    -fx-stroke: #C8784B;
+}
+
+.default-color1.chart-series-line {
+    -fx-stroke: #3D4038;
+}
+
+.default-color0.chart-line-symbol {
+    -fx-background-color: #C8784B, #FFFFFF;
+}
+
+.default-color1.chart-line-symbol {
+    -fx-background-color: #3D4038, #FFFFFF;
+}
+
+.default-color0.chart-legend-item-symbol {
+    -fx-background-color: #C8784B;
+}
+
+.default-color1.chart-legend-item-symbol {
+    -fx-background-color: #3D4038;
+}
+
+/* BarChart styling */
+.default-color0.chart-bar {
+    -fx-bar-fill: #C8784B;
+    -fx-background-color: #C8784B;
+}
+
+/* PieChart styling: 5 harmonic architectural colors */
+.default-color0.chart-pie {
+    -fx-pie-color: #C8784B;
+    -fx-border-color: #FFFFFF;
+}
+
+.default-color1.chart-pie {
+    -fx-pie-color: #446E52;
+    -fx-border-color: #FFFFFF;
+}
+
+.default-color2.chart-pie {
+    -fx-pie-color: #3D4038;
+    -fx-border-color: #FFFFFF;
+}
+
+.default-color3.chart-pie {
+    -fx-pie-color: #A66F38;
+    -fx-border-color: #FFFFFF;
+}
+
+.default-color4.chart-pie {
+    -fx-pie-color: #74786B;
+    -fx-border-color: #FFFFFF;
+}
+
+.default-color0.chart-legend-item-symbol {
+    -fx-background-color: #C8784B;
+}
+
+.default-color1.chart-legend-item-symbol {
+    -fx-background-color: #446E52;
+}
+
+.default-color2.chart-legend-item-symbol {
+    -fx-background-color: #3D4038;
+}
+
+.default-color3.chart-legend-item-symbol {
+    -fx-background-color: #A66F38;
+}
+
+.default-color4.chart-legend-item-symbol {
+    -fx-background-color: #74786B;
+}
+
+.chart-pie-label {
+    -fx-fill: #5A5D55;
+}
+
+.chart-pie-label-line {
+    -fx-stroke: #C5C3BB;
 }
 
 /* ==================== Activity Table ==================== */

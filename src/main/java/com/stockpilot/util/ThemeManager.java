@@ -121,6 +121,9 @@ public final class ThemeManager {
         if (themeUrl != null) {
             boundScene.getStylesheets().add(themeUrl.toExternalForm());
         }
+        if (boundScene.getRoot() != null) {
+            boundScene.getRoot().applyCss();
+        }
     }
 
     private static Theme loadSavedTheme() {
@@ -132,3 +135,4 @@ public final class ThemeManager {
         }
     }
 }
+

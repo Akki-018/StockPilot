@@ -4,6 +4,27 @@
     -fx-font-family: "Segoe UI", -apple-system, "Inter", "Helvetica Neue", sans-serif;
 }
 
+/* ==================== Dashboard ScrollPane ==================== */
+.dashboard-scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.dashboard-scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.dashboard-scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 8;
+}
+
+.dashboard-scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-pref-height: 8;
+}
+
 /* ==================== Sidebar ==================== */
 .sidebar {
     -fx-border-width: 0 1 0 0;
@@ -179,12 +200,12 @@
 }
 
 .section-header {
-    -fx-padding: 14 18 14 18;
+    -fx-padding: 13 16 13 16;
     -fx-border-width: 0 0 1 0;
 }
 
 .section-title {
-    -fx-font-size: 13px;
+    -fx-font-size: 12px;
     -fx-font-weight: bold;
 }
 
@@ -201,15 +222,8 @@
     -fx-border-width: 1;
 }
 
-.live-status-pill {
-    -fx-font-size: 10px;
-    -fx-font-weight: bold;
-    -fx-padding: 3 8 3 8;
-    -fx-background-radius: 3;
-}
-
 .section-footer {
-    -fx-padding: 9 18 9 18;
+    -fx-padding: 9 16 9 16;
     -fx-border-width: 1 0 0 0;
 }
 
@@ -220,6 +234,104 @@
 
 .footer-label-secondary {
     -fx-font-size: 10px;
+}
+
+/* ==================== Inventory Health Widget ==================== */
+.health-widget-container {
+    -fx-padding: 2 12 2 12;
+}
+
+.health-widget-title {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.health-percentage-badge {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.health-bar-track {
+    -fx-background-color: transparent;
+    -fx-padding: 2 0 2 0;
+}
+
+.health-seg-healthy, .health-seg-low, .health-seg-out {
+    -fx-background-radius: 2;
+}
+
+.health-legend-healthy, .health-legend-low, .health-legend-out {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+/* ==================== JavaFX Built-in Charts Structure ==================== */
+.chart {
+    -fx-padding: 6 10 10 6;
+}
+
+.chart-content {
+    -fx-padding: 0;
+}
+
+.chart-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.chart-legend {
+    -fx-padding: 4 0 4 0;
+    -fx-background-insets: 0;
+}
+
+.chart-legend-item {
+    -fx-font-size: 10px;
+    -fx-font-weight: normal;
+}
+
+.axis {
+    -fx-tick-label-font-size: 10px;
+    -fx-tick-length: 4;
+    -fx-minor-tick-length: 0;
+}
+
+.axis-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.chart-vertical-grid-lines, .chart-horizontal-grid-lines {
+    -fx-stroke-width: 1;
+    -fx-stroke-dash-array: 2 3;
+}
+
+.chart-alternative-column-fill, .chart-alternative-row-fill {
+    -fx-fill: transparent;
+}
+
+.chart-series-line {
+    -fx-stroke-width: 2.2;
+}
+
+.chart-line-symbol {
+    -fx-background-radius: 4;
+    -fx-padding: 3;
+}
+
+.chart-bar {
+    -fx-background-radius: 3 3 0 0;
+}
+
+.chart-pie {
+    -fx-border-width: 1;
+}
+
+.chart-pie-label {
+    -fx-font-size: 10px;
+}
+
+.chart-pie-label-line {
+    -fx-stroke-width: 1;
 }
 
 /* ==================== Activity Table ==================== */
@@ -235,25 +347,25 @@
 
 .activity-table .column-header {
     -fx-background-color: transparent;
-    -fx-size: 36;
+    -fx-size: 34;
     -fx-border-color: transparent;
     -fx-padding: 0 4 0 4;
 }
 
 .activity-table .column-header .label {
-    -fx-font-size: 11px;
+    -fx-font-size: 10px;
     -fx-font-weight: bold;
     -fx-alignment: CENTER_LEFT;
 }
 
 .activity-table .table-row-cell {
-    -fx-cell-size: 44;
+    -fx-cell-size: 40;
     -fx-border-width: 0 0 1 0;
 }
 
 .activity-table .table-cell {
     -fx-alignment: CENTER_LEFT;
-    -fx-padding: 0 8 0 12;
+    -fx-padding: 0 6 0 10;
 }
 
 /* Suppress unwanted empty table rows completely */
@@ -268,30 +380,30 @@
 }
 
 .cell-timestamp {
-    -fx-font-size: 12px;
+    -fx-font-size: 11px;
 }
 
 .cell-item-name {
-    -fx-font-size: 13px;
+    -fx-font-size: 12px;
     -fx-font-weight: bold;
 }
 
 .action-tag {
-    -fx-font-size: 10px;
+    -fx-font-size: 9px;
     -fx-font-weight: bold;
-    -fx-padding: 3 7 3 7;
+    -fx-padding: 2 6 2 6;
     -fx-background-radius: 3;
 }
 
 .delta-label {
-    -fx-font-size: 12px;
+    -fx-font-size: 11px;
     -fx-font-weight: bold;
 }
 
 .status-pill {
-    -fx-font-size: 10px;
+    -fx-font-size: 9px;
     -fx-font-weight: bold;
-    -fx-padding: 3 8 3 8;
+    -fx-padding: 2 7 2 7;
     -fx-background-radius: 3;
 }
 

@@ -45,7 +45,7 @@ public class MainLayoutController {
         rootLayout.setTop(buildTopBar());
 
         // Default landing view
-        navigateTo("Dashboard", "Operational inventory ledger, SKU velocity, and critical stock alerts");
+        navigateTo("Dashboard", "Operational metrics, inventory velocity, and category distribution");
 
         // Sync theme toggle buttons on theme change
         ThemeManager.addThemeListener(this::updateThemeToggleVisuals);
@@ -113,7 +113,7 @@ public class MainLayoutController {
 
         // Navigation Items with Icons
         addNavButton(sidebar, "Dashboard", "Dashboard", ViewHelper.ICON_DASHBOARD,
-                "Operational inventory ledger, SKU velocity, and critical stock alerts", null);
+                "Operational metrics, inventory velocity, and category distribution", null);
 
         addNavButton(sidebar, "Products", "Products", ViewHelper.ICON_PRODUCTS,
                 "Manage product records, categories, and stock thresholds", null);
@@ -200,7 +200,7 @@ public class MainLayoutController {
         topBarTitle = new Label("Dashboard");
         topBarTitle.getStyleClass().add("top-bar-title");
 
-        topBarSubtitle = new Label("Operational inventory ledger, SKU velocity, and critical stock alerts");
+        topBarSubtitle = new Label("Operational metrics, inventory velocity, and category distribution");
         topBarSubtitle.getStyleClass().add("top-bar-subtitle");
 
         titleContainer.getChildren().addAll(breadcrumb, topBarTitle, topBarSubtitle);
@@ -221,7 +221,7 @@ public class MainLayoutController {
 
         searchContainer.getChildren().addAll(searchIcon, searchField);
 
-        // Station / Date Indicator Chip
+        // Station / Mode Indicator Chip
         HBox stationChip = new HBox(6);
         stationChip.getStyleClass().add("station-chip");
         stationChip.setAlignment(Pos.CENTER_LEFT);
@@ -229,7 +229,7 @@ public class MainLayoutController {
         Label stationDot = new Label("●");
         stationDot.getStyleClass().add("station-dot");
 
-        Label stationText = new Label("WARC-01 // NOV 13, 2026");
+        Label stationText = new Label("WARC-01 // DEMO DATA");
         stationText.getStyleClass().add("station-text");
 
         stationChip.getChildren().addAll(stationDot, stationText);
