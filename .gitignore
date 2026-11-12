@@ -1,0 +1,26 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# OS & Logs
+.DS_Store
+Thumbs.db
+*.log
+
+# Database (future SQLite files)
+*.db
+*.sqlite
+*.sqlite3
+

@@ -1,0 +1,3 @@
+/* StockPilot Stylesheet Proxy: Defaults to base + theme-light */
+@import url("base.css");
+@import url("theme-light.css");

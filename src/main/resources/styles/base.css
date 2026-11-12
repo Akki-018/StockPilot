@@ -1,0 +1,334 @@
+/* StockPilot Base Stylesheet: Structural Layout, Geometry & Typography */
+
+.app-root {
+    -fx-font-family: "Segoe UI", -apple-system, "Inter", "Helvetica Neue", sans-serif;
+}
+
+/* ==================== Sidebar ==================== */
+.sidebar {
+    -fx-border-width: 0 1 0 0;
+}
+
+.brand-box {
+    -fx-border-width: 0 0 1 0;
+}
+
+.brand-icon {
+    -fx-shape: "M12 2L2 7.5v9L12 22l10-5.5v-9L12 2zm0 2.3l7.6 4.2-7.6 4.2L4.4 8.5 12 4.3zM4 10.3l7 3.9v6.8l-7-3.9v-6.8zm16 6.8l-7 3.9v-6.8l7-3.9v6.8z";
+}
+
+.brand-title {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+
+.brand-subtitle {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.nav-section-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-padding: 9 12 9 12;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-width: 0 0 0 3;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+.nav-label {
+    -fx-font-size: 13px;
+    -fx-font-weight: normal;
+}
+
+.nav-badge {
+    -fx-font-size: 9px;
+    -fx-font-weight: bold;
+    -fx-padding: 2 6 2 6;
+    -fx-background-radius: 3;
+}
+
+.sidebar-footer {
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 12 10 4 10;
+}
+
+.system-live-dot {
+    -fx-font-size: 10px;
+}
+
+.sidebar-footer-title {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.sidebar-footer-subtitle {
+    -fx-font-size: 10px;
+}
+
+/* ==================== Top Bar ==================== */
+.top-bar {
+    -fx-border-width: 0 0 1 0;
+}
+
+.top-bar-breadcrumb {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.top-bar-title {
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+}
+
+.top-bar-subtitle {
+    -fx-font-size: 12px;
+}
+
+.search-box-container {
+    -fx-padding: 4 10 4 10;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-border-width: 1;
+}
+
+.top-search-field {
+    -fx-background-color: transparent;
+    -fx-padding: 4 6 4 6;
+    -fx-font-size: 12px;
+}
+
+.top-search-field:focused {
+    -fx-background-color: transparent;
+}
+
+.station-chip {
+    -fx-padding: 6 12 6 12;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-border-width: 1;
+}
+
+.station-dot {
+    -fx-font-size: 10px;
+}
+
+.station-text {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+/* ==================== Theme Toggle ==================== */
+.theme-toggle-container {
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 2;
+}
+
+.theme-toggle-btn {
+    -fx-background-color: transparent;
+    -fx-padding: 5 8 5 8;
+    -fx-background-radius: 3;
+    -fx-cursor: hand;
+    -fx-border-width: 0;
+}
+
+/* ==================== Metrics Strip ==================== */
+.metrics-strip {
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.metric-segment {
+    -fx-padding: 16 20 16 20;
+}
+
+.metric-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.metric-value {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+.metric-subtext {
+    -fx-font-size: 11px;
+}
+
+.metric-divider {
+    -fx-min-width: 1;
+    -fx-pref-width: 1;
+    -fx-max-width: 1;
+}
+
+/* ==================== Section Card ==================== */
+.section-card {
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+}
+
+.section-header {
+    -fx-padding: 14 18 14 18;
+    -fx-border-width: 0 0 1 0;
+}
+
+.section-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.section-subtitle {
+    -fx-font-size: 11px;
+}
+
+.meta-tag {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 3 8 3 8;
+    -fx-background-radius: 3;
+    -fx-border-radius: 3;
+    -fx-border-width: 1;
+}
+
+.live-status-pill {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 3 8 3 8;
+    -fx-background-radius: 3;
+}
+
+.section-footer {
+    -fx-padding: 9 18 9 18;
+    -fx-border-width: 1 0 0 0;
+}
+
+.footer-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.footer-label-secondary {
+    -fx-font-size: 10px;
+}
+
+/* ==================== Activity Table ==================== */
+.activity-table {
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.activity-table .column-header-background {
+    -fx-border-width: 0 0 1 0;
+}
+
+.activity-table .column-header {
+    -fx-background-color: transparent;
+    -fx-size: 36;
+    -fx-border-color: transparent;
+    -fx-padding: 0 4 0 4;
+}
+
+.activity-table .column-header .label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.activity-table .table-row-cell {
+    -fx-cell-size: 44;
+    -fx-border-width: 0 0 1 0;
+}
+
+.activity-table .table-cell {
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 8 0 12;
+}
+
+/* Suppress unwanted empty table rows completely */
+.activity-table .table-row-cell:empty {
+    -fx-background-color: transparent !important;
+    -fx-border-color: transparent !important;
+}
+
+.activity-table .table-row-cell:empty .table-cell {
+    -fx-border-color: transparent !important;
+    -fx-background-color: transparent !important;
+}
+
+.cell-timestamp {
+    -fx-font-size: 12px;
+}
+
+.cell-item-name {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.action-tag {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 3 7 3 7;
+    -fx-background-radius: 3;
+}
+
+.delta-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.status-pill {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 3 8 3 8;
+    -fx-background-radius: 3;
+}
+
+/* ==================== Placeholder Views ==================== */
+.placeholder-card {
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 28;
+}
+
+.module-badge {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 3 8 3 8;
+    -fx-background-radius: 3;
+}
+
+.placeholder-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.placeholder-description {
+    -fx-font-size: 13px;
+    -fx-line-spacing: 4;
+}
+
+.placeholder-footer {
+    -fx-padding: 14 0 0 0;
+    -fx-border-width: 1 0 0 0;
+}
+
+.footer-spec {
+    -fx-font-size: 11px;
+}
+
+.footer-spec-divider {
+    -fx-font-size: 11px;
+}

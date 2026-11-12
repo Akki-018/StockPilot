@@ -1,0 +1,353 @@
+/* StockPilot Theme: Light Industrial (Warm Off-White, Charcoal, Burnt Orange Accent) */
+
+.app-root {
+    -fx-background-color: #F5F4F0;
+}
+
+/* ==================== Sidebar ==================== */
+.sidebar {
+    -fx-background-color: #252822;
+    -fx-border-color: #33372F;
+}
+
+.brand-box {
+    -fx-border-color: #33372F;
+}
+
+.brand-icon {
+    -fx-fill: #C8784B;
+}
+
+.brand-title {
+    -fx-text-fill: #F5F4F0;
+}
+
+.brand-subtitle {
+    -fx-text-fill: #8D9186;
+}
+
+.nav-section-label {
+    -fx-text-fill: #6E7268;
+}
+
+.nav-button:hover {
+    -fx-background-color: #2E332A;
+}
+
+.nav-button-active {
+    -fx-background-color: #2E332A;
+    -fx-border-color: transparent transparent transparent #C8784B;
+}
+
+.nav-icon {
+    -fx-fill: #8D9186;
+}
+
+.nav-button:hover .nav-icon {
+    -fx-fill: #F5F4F0;
+}
+
+.nav-button-active .nav-icon {
+    -fx-fill: #C8784B;
+}
+
+.nav-label {
+    -fx-text-fill: #A6AAA0;
+}
+
+.nav-button:hover .nav-label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.nav-button-active .nav-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+.nav-badge {
+    -fx-background-color: #3A4035;
+    -fx-text-fill: #D4D8CE;
+}
+
+.sidebar-footer {
+    -fx-border-color: #33372F;
+}
+
+.system-live-dot {
+    -fx-text-fill: #4B8A5E;
+}
+
+.sidebar-footer-title {
+    -fx-text-fill: #C5C9BF;
+}
+
+.sidebar-footer-subtitle {
+    -fx-text-fill: #7A7E74;
+}
+
+/* ==================== Top Bar ==================== */
+.top-bar {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E3E1DA;
+}
+
+.top-bar-breadcrumb {
+    -fx-text-fill: #8D9085;
+}
+
+.top-bar-title {
+    -fx-text-fill: #242522;
+}
+
+.top-bar-subtitle {
+    -fx-text-fill: #777970;
+}
+
+.search-box-container {
+    -fx-background-color: #FAF9F5;
+    -fx-border-color: #DFDDD5;
+}
+
+.search-box-container:focused-within {
+    -fx-border-color: #C8784B;
+    -fx-background-color: #FFFFFF;
+}
+
+.search-icon {
+    -fx-fill: #8E9187;
+}
+
+.top-search-field {
+    -fx-text-fill: #242522;
+    -fx-prompt-text-fill: #9CA096;
+}
+
+.station-chip {
+    -fx-background-color: #F1EFEA;
+    -fx-border-color: #DFDDD5;
+}
+
+.station-dot {
+    -fx-text-fill: #3D7A50;
+}
+
+.station-text {
+    -fx-text-fill: #474942;
+}
+
+/* ==================== Theme Toggle ==================== */
+.theme-toggle-container {
+    -fx-background-color: #F1EFEA;
+    -fx-border-color: #DFDDD5;
+}
+
+.theme-toggle-icon {
+    -fx-fill: #7D8077;
+}
+
+.theme-toggle-btn:hover {
+    -fx-background-color: #E6E4DE;
+}
+
+.theme-toggle-active {
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.06), 4, 0, 0, 1);
+}
+
+.theme-toggle-active .theme-toggle-icon {
+    -fx-fill: #C8784B;
+}
+
+/* ==================== Metrics Strip ==================== */
+.metrics-strip {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E3E1DA;
+}
+
+.metric-label {
+    -fx-text-fill: #777970;
+}
+
+.metric-value {
+    -fx-text-fill: #242522;
+}
+
+.metric-value-warning {
+    -fx-text-fill: #B37D28;
+}
+
+.metric-value-danger {
+    -fx-text-fill: #BA3D30;
+}
+
+.metric-subtext {
+    -fx-text-fill: #8A8D83;
+}
+
+.metric-divider {
+    -fx-background-color: #EDEBE4;
+}
+
+/* ==================== Section Card ==================== */
+.section-card {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E3E1DA;
+}
+
+.section-header {
+    -fx-background-color: #FAF9F6;
+    -fx-border-color: #E8E6DF;
+}
+
+.section-title {
+    -fx-text-fill: #242522;
+}
+
+.section-subtitle {
+    -fx-text-fill: #777970;
+}
+
+.meta-tag {
+    -fx-background-color: #F3F1EC;
+    -fx-border-color: #DFDDD5;
+    -fx-text-fill: #5A5D54;
+}
+
+.live-status-pill {
+    -fx-background-color: #EBF3ED;
+    -fx-text-fill: #2B693E;
+}
+
+.section-footer {
+    -fx-background-color: #FAF9F6;
+    -fx-border-color: #E8E6DF;
+}
+
+.footer-label {
+    -fx-text-fill: #555850;
+}
+
+.footer-label-secondary {
+    -fx-text-fill: #8E9187;
+}
+
+/* ==================== Activity Table ==================== */
+.activity-table {
+    -fx-background-color: #FFFFFF;
+}
+
+.activity-table .column-header-background {
+    -fx-background-color: #F3F1EC;
+    -fx-border-color: #E3E1DA;
+}
+
+.activity-table .column-header .label {
+    -fx-text-fill: #5F6259;
+}
+
+.activity-table .table-row-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #ECEAE4;
+}
+
+.activity-table .table-row-cell:hover {
+    -fx-background-color: #F8F7F4;
+}
+
+.activity-table .table-row-cell:selected {
+    -fx-background-color: #F4EFEA;
+}
+
+.cell-timestamp {
+    -fx-text-fill: #6D7067;
+}
+
+.cell-item-name {
+    -fx-text-fill: #242522;
+}
+
+/* Event Type tags */
+.action-tag {
+    -fx-background-color: #F0EFEB;
+    -fx-text-fill: #4B4E46;
+}
+
+.action-tag-in {
+    -fx-background-color: #E9F4EC;
+    -fx-text-fill: #27683C;
+}
+
+.action-tag-out {
+    -fx-background-color: #F2EFEA;
+    -fx-text-fill: #4B4E46;
+}
+
+.action-tag-alert {
+    -fx-background-color: #FDF2E2;
+    -fx-text-fill: #94631B;
+}
+
+/* Delta tags */
+.delta-in {
+    -fx-text-fill: #27683C;
+}
+
+.delta-out {
+    -fx-text-fill: #5A5D54;
+}
+
+.delta-alert {
+    -fx-text-fill: #94631B;
+}
+
+/* Status pills */
+.status-completed {
+    -fx-background-color: #E9F4EC;
+    -fx-text-fill: #27683C;
+}
+
+.status-attention {
+    -fx-background-color: #FDF2E2;
+    -fx-text-fill: #94631B;
+}
+
+.status-critical {
+    -fx-background-color: #FCECE9;
+    -fx-text-fill: #B53629;
+}
+
+.status-neutral {
+    -fx-background-color: #EFEFEA;
+    -fx-text-fill: #4A4D45;
+}
+
+/* ==================== Placeholder Views ==================== */
+.placeholder-card {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #E3E1DA;
+}
+
+.module-badge {
+    -fx-background-color: #FAF0EA;
+    -fx-text-fill: #C8784B;
+}
+
+.placeholder-title {
+    -fx-text-fill: #242522;
+}
+
+.placeholder-description {
+    -fx-text-fill: #5A5D54;
+}
+
+.placeholder-footer {
+    -fx-border-color: #E8E6DF;
+}
+
+.footer-spec {
+    -fx-text-fill: #777970;
+}
+
+.footer-spec-divider {
+    -fx-text-fill: #C5C3BB;
+}
