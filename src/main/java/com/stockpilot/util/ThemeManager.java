@@ -37,11 +37,20 @@ public final class ThemeManager {
     }
 
     private static final String PREF_KEY_THEME = "stockpilot_active_theme";
-    private static final Preferences PREFERENCES = Preferences.userNodeForPackage(ThemeManager.class);
+    private static final Preferences PREFERENCES = initPreferences();
     private static final List<Consumer<Theme>> LISTENERS = new ArrayList<>();
 
     private static Theme currentTheme = loadSavedTheme();
     private static Scene boundScene;
+
+    private static Preferences initPreferences() {
+        try {
+            return Preferences.userNodeForPackage(ThemeManager.class);
+        } catch (Throwable t) {
+            System.err.println("ThemeManager: Preferences API restricted, using memory fallback: " + t.getMessage());
+            return null;
+        }
+    }
 
     private ThemeManager() {
         // Utility class; prevent instantiation.
@@ -78,10 +87,12 @@ public final class ThemeManager {
             theme = Theme.LIGHT;
         }
         currentTheme = theme;
-        try {
-            PREFERENCES.put(PREF_KEY_THEME, theme.name());
-        } catch (Exception ignored) {
-            // Non-critical fallback if environment restricts user preferences registry
+        if (PREFERENCES != null) {
+            try {
+                PREFERENCES.put(PREF_KEY_THEME, theme.name());
+            } catch (Exception ignored) {
+                // Non-critical fallback if environment restricts user preferences registry
+            }
         }
         applyTheme(theme);
         notifyListeners(theme);
@@ -127,12 +138,14 @@ public final class ThemeManager {
     }
 
     private static Theme loadSavedTheme() {
-        try {
-            String saved = PREFERENCES.get(PREF_KEY_THEME, Theme.LIGHT.name());
-            return Theme.valueOf(saved);
-        } catch (Exception e) {
-            return Theme.LIGHT;
+        if (PREFERENCES != null) {
+            try {
+                String saved = PREFERENCES.get(PREF_KEY_THEME, Theme.LIGHT.name());
+                return Theme.valueOf(saved);
+            } catch (Exception ignored) {
+            }
         }
+        return Theme.LIGHT;
     }
 }
 
