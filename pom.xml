@@ -48,6 +48,9 @@
                 <version>${javafx.maven.plugin.version}</version>
                 <configuration>
                     <mainClass>com.stockpilot.MainApp</mainClass>
+                    <options>
+                        <option>-Djavafx.cachedir=${project.basedir}/target/javafx-cache</option>
+                    </options>
                 </configuration>
             </plugin>
         </plugins>
