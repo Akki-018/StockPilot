@@ -46,3 +46,4 @@ public class InventoryHealth {
         return total == 0 ? 0.0 : (outOfStockItems * 100.0) / total;
     }
 }
+

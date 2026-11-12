@@ -1,6 +1,7 @@
 package com.stockpilot;
 
 import com.stockpilot.controller.MainLayoutController;
+import com.stockpilot.database.DatabaseManager;
 import com.stockpilot.util.ThemeManager;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -20,6 +21,9 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        // Initialize SQLite persistence layer and tables
+        DatabaseManager.initializeDatabase();
+
         MainLayoutController mainController = new MainLayoutController();
         Scene scene = new Scene(mainController.getRootLayout(), INITIAL_WIDTH, INITIAL_HEIGHT);
 

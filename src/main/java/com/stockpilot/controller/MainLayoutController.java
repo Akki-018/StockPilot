@@ -27,6 +27,7 @@ public class MainLayoutController {
 
     private final BorderPane rootLayout;
     private final DashboardController dashboardController;
+    private final ProductController productController;
     private final Map<String, Button> navigationButtons = new LinkedHashMap<>();
     private final Map<String, Supplier<Node>> viewFactories = new LinkedHashMap<>();
 
@@ -39,6 +40,7 @@ public class MainLayoutController {
         this.rootLayout = new BorderPane();
         this.rootLayout.getStyleClass().add("app-root");
         this.dashboardController = new DashboardController();
+        this.productController = new ProductController();
 
         registerViews();
         rootLayout.setLeft(buildSidebar());
@@ -57,11 +59,7 @@ public class MainLayoutController {
 
     private void registerViews() {
         viewFactories.put("Dashboard", dashboardController::createView);
-        viewFactories.put("Products", () -> ViewHelper.createPlaceholderView(
-                "Products Catalog",
-                "PLANNED MODULE",
-                "Product master records, SKU classifications, barcode management, and reorder levels will be introduced in the upcoming development sprint."
-        ));
+        viewFactories.put("Products", productController::createView);
         viewFactories.put("Transactions", () -> ViewHelper.createPlaceholderView(
                 "Stock Transactions Ledger",
                 "PLANNED MODULE",
@@ -145,7 +143,7 @@ public class MainLayoutController {
         Label runtimeLabel = new Label("RUNTIME: JAVA 25 LTS (FX25)");
         runtimeLabel.getStyleClass().add("sidebar-footer-subtitle");
 
-        Label storageLabel = new Label("STORAGE: SQLITE (STAGE 2)");
+        Label storageLabel = new Label("STORAGE: SQLITE (ACTIVE)");
         storageLabel.getStyleClass().add("sidebar-footer-subtitle");
 
         footerBox.getChildren().addAll(footerTop, runtimeLabel, storageLabel);

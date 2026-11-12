@@ -6,40 +6,63 @@ import com.stockpilot.model.DailyMovement;
 import com.stockpilot.model.DashboardSummary;
 import com.stockpilot.model.InventoryHealth;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * Data access object providing inventory metrics, activity logs, and analytics.
- * NOTE: Currently populated with structured DEMO DATA for dashboard evaluation
- * until SQLite persistence is integrated in the next milestone.
+ * Data access object providing dashboard metrics, category distributions,
+ * and movement analytics.
+ * Product metrics, category distributions, and health indicators query live SQLite records.
  */
 public class DashboardDao {
 
+    private final ProductDao productDao;
+
+    public DashboardDao() {
+        this.productDao = new ProductDao();
+    }
+
     /**
-     * Summary card metrics.
-     * DEMO DATA: 148 products across catalog, 3,420 total units in storage.
+     * Calculates real dashboard metrics directly from SQLite database:
+     * - Total distinct products
+     * - Total stock units
+     * - Low-stock products
+     * - Out-of-stock products
+     * - Total inventory valuation
      */
     public DashboardSummary fetchSummary() {
-        return new DashboardSummary(148, 3420, 12, 4);
+        int totalProducts = productDao.countTotalProducts();
+        int totalUnits = productDao.sumTotalUnits();
+        int lowStock = productDao.countLowStockProducts();
+        int outOfStock = productDao.countOutOfStockProducts();
+        BigDecimal valuation = productDao.sumInventoryValuation();
+
+        return new DashboardSummary(totalProducts, totalUnits, lowStock, outOfStock, valuation);
     }
 
     /**
-     * Product counts and unit quantities grouped by major inventory category.
-     * DEMO DATA: 5 industrial catalog categories summing to 148 products and 3,420 units.
+     * Real category distribution and stock levels queried directly from SQLite products table.
      */
     public List<CategoryStock> fetchCategoryStocks() {
-        return List.of(
-                new CategoryStock("Peripherals", 48, 1120),
-                new CategoryStock("Networking", 32, 780),
-                new CategoryStock("Displays", 18, 340),
-                new CategoryStock("Storage", 26, 690),
-                new CategoryStock("Cables & Power", 24, 490)
-        );
+        return productDao.fetchCategoryStockSummary();
     }
 
     /**
-     * Seven-day stock movement history (Stock In vs Stock Out).
-     * DEMO DATA: Last 7 days of warehouse movement volume.
+     * Real inventory health calculation based on live SQLite product records.
+     */
+    public InventoryHealth fetchInventoryHealth() {
+        int lowStock = productDao.countLowStockProducts();
+        int outOfStock = productDao.countOutOfStockProducts();
+        int totalProducts = productDao.countTotalProducts();
+        int healthy = Math.max(0, totalProducts - lowStock - outOfStock);
+
+        return new InventoryHealth(healthy, lowStock, outOfStock);
+    }
+
+    /**
+     * Seven-day stock movement history.
+     * DEMO DATASET: Inbound vs outbound velocity demonstration trend
+     * until the comprehensive transaction recording engine is introduced in Stage 3.
      */
     public List<DailyMovement> fetchStockMovements() {
         return List.of(
@@ -54,22 +77,14 @@ public class DashboardDao {
     }
 
     /**
-     * Overall inventory health indicators.
-     * DEMO DATA: 132 healthy, 12 low stock buffer warnings, 4 depleted stock alerts.
-     */
-    public InventoryHealth fetchInventoryHealth() {
-        return new InventoryHealth(132, 12, 4);
-    }
-
-    /**
      * Recent inventory activity events.
-     * DEMO DATA: 5 recent events for testing compact table display.
+     * DEMO DATASET: Initial ledger log entries.
      */
     public List<ActivityItem> fetchRecentActivity() {
         return List.of(
                 new ActivityItem("Today, 09:42 AM", "Stock In", "USB-C Docking Station", "+45 units", "Completed"),
                 new ActivityItem("Today, 09:15 AM", "Stock Out", "Ergonomic Wireless Mouse", "-18 units", "Completed"),
-                new ActivityItem("Yesterday, 05:30 PM", "Stock Alert", "27\" 4K IPS Monitor", "6 remaining", "Attention"),
+                new ActivityItem("Yesterday, 05:30 PM", "Stock Alert", "27\" 4K IPS Color Monitor", "6 remaining", "Attention"),
                 new ActivityItem("Yesterday, 03:10 PM", "Stock Out", "Mechanical Keyboard (MX Brown)", "-12 units", "Completed"),
                 new ActivityItem("Yesterday, 11:05 AM", "Stock Alert", "Cat6 Shielded Patch Cable (5m)", "0 remaining", "Critical")
         );

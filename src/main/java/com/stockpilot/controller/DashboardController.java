@@ -46,6 +46,7 @@ import java.util.List;
 public class DashboardController {
 
     private final DashboardService dashboardService;
+    private final java.text.NumberFormat currencyFormatter = java.text.NumberFormat.getCurrencyInstance(java.util.Locale.US);
 
     public DashboardController() {
         this.dashboardService = new DashboardService();
@@ -129,6 +130,13 @@ public class DashboardController {
                 "metric-value-danger"
         );
 
+        VBox segValuation = ViewHelper.createStatSegment(
+                "INVENTORY VALUATION",
+                currencyFormatter.format(summary.getInventoryValuation()),
+                "Live asset valuation on hand",
+                ""
+        );
+
         strip.getChildren().addAll(
                 segProducts,
                 createMetricDivider(),
@@ -136,7 +144,9 @@ public class DashboardController {
                 createMetricDivider(),
                 segLowStock,
                 createMetricDivider(),
-                segOutOfStock
+                segOutOfStock,
+                createMetricDivider(),
+                segValuation
         );
 
         return strip;
@@ -370,7 +380,7 @@ public class DashboardController {
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        Label footerRight = new Label("PERSISTENCE: SQLITE (STAGE 2)");
+        Label footerRight = new Label("PERSISTENCE: SQLITE (ACTIVE)");
         footerRight.getStyleClass().add("footer-label-secondary");
 
         footer.getChildren().addAll(footerLeft, spacer, footerRight);

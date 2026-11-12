@@ -27,3 +27,4 @@ public class DailyMovement {
         return stockOutUnits;
     }
 }
+
