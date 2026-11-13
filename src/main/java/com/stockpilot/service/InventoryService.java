@@ -221,3 +221,4 @@ public class InventoryService {
         return transactionDao.fetch7DayMovementSummary();
     }
 }
+
