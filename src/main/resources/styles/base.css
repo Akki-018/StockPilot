@@ -339,6 +339,7 @@
     -fx-border-width: 0;
     -fx-background-insets: 0;
     -fx-padding: 0;
+    -fx-table-cell-border-color: transparent;
 }
 
 .activity-table .column-header-background {
@@ -365,7 +366,8 @@
 
 .activity-table .table-cell {
     -fx-alignment: CENTER_LEFT;
-    -fx-padding: 0 6 0 10;
+    -fx-padding: 0 8 0 8;
+    -fx-border-color: transparent;
 }
 
 /* Suppress unwanted empty table rows completely */
@@ -527,7 +529,122 @@
     -fx-font-weight: bold;
 }
 
+.cell-numeric {
+    -fx-font-family: "Cascadia Code", "Consolas", monospace;
+    -fx-font-size: 11px;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+.cell-numeric-muted {
+    -fx-font-family: "Cascadia Code", "Consolas", monospace;
+    -fx-font-size: 11px;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+.cell-currency {
+    -fx-font-family: "Cascadia Code", "Consolas", monospace;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+.cell-qty-in {
+    -fx-font-family: "Cascadia Code", "Consolas", monospace;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+.cell-qty-out {
+    -fx-font-family: "Cascadia Code", "Consolas", monospace;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+.cell-stock-prev {
+    -fx-font-family: "Cascadia Code", "Consolas", monospace;
+    -fx-font-size: 11px;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+.cell-stock-balance {
+    -fx-font-family: "Cascadia Code", "Consolas", monospace;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_RIGHT;
+}
+
+.cell-audit-notes {
+    -fx-font-size: 11px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.cell-muted {
+    -fx-font-size: 11px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.cell-actions {
+    -fx-alignment: CENTER;
+    -fx-padding: 0 4 0 4;
+}
+
+/* ==================== Tooltip Styling ==================== */
+.tooltip {
+    -fx-font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    -fx-font-size: 11px;
+    -fx-padding: 5 8 5 8;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-width: 1;
+}
+
 /* ==================== Modal Forms & Dialogs ==================== */
+.stockpilot-dialog .form-label {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.stockpilot-dialog .dialog-helper-label {
+    -fx-font-size: 11px;
+}
+
+.stockpilot-dialog .text-field,
+.stockpilot-dialog .text-area {
+    -fx-font-size: 12px;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-width: 1;
+    -fx-padding: 6 10 6 10;
+}
+
+.stockpilot-dialog .combo-box {
+    -fx-font-size: 12px;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-width: 1;
+}
+
+.stockpilot-dialog .combo-box .text-field {
+    -fx-font-size: 12px;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-width: 0;
+    -fx-padding: 4 8 4 8;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-border-width: 1;
+}
+
+.combo-box-popup .list-cell {
+    -fx-font-size: 12px;
+    -fx-padding: 6 10 6 10;
+}
+
 .dialog-error-label {
     -fx-font-size: 11px;
     -fx-font-weight: bold;

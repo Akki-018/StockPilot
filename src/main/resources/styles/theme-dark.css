@@ -393,6 +393,7 @@
 /* ==================== Activity Table ==================== */
 .activity-table {
     -fx-background-color: #252925;
+    -fx-table-cell-border-color: transparent;
 }
 
 .activity-table .column-header-background {
@@ -400,13 +401,20 @@
     -fx-border-color: #2F342F;
 }
 
+.activity-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #2F342F transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
 .activity-table .column-header .label {
-    -fx-text-fill: #8E9189;
+    -fx-text-fill: #9CA096;
 }
 
 .activity-table .table-row-cell {
     -fx-background-color: #252925;
     -fx-border-color: #2E332E;
+    -fx-border-width: 0 0 1 0;
 }
 
 .activity-table .table-row-cell:hover {
@@ -417,12 +425,57 @@
     -fx-background-color: #343B34;
 }
 
+.activity-table .table-cell {
+    -fx-text-fill: #E6E7E3;
+    -fx-border-color: transparent;
+}
+
 .cell-timestamp {
-    -fx-text-fill: #868A80;
+    -fx-text-fill: #A6AAA0;
 }
 
 .cell-item-name {
     -fx-text-fill: #E6E7E3;
+}
+
+.cell-sku {
+    -fx-text-fill: #D68A5D;
+}
+
+.cell-numeric {
+    -fx-text-fill: #E6E7E3;
+}
+
+.cell-numeric-muted {
+    -fx-text-fill: #8E9189;
+}
+
+.cell-currency {
+    -fx-text-fill: #E6E7E3;
+}
+
+.cell-qty-in {
+    -fx-text-fill: #5BB876;
+}
+
+.cell-qty-out {
+    -fx-text-fill: #E29B70;
+}
+
+.cell-stock-prev {
+    -fx-text-fill: #8E9189;
+}
+
+.cell-stock-balance {
+    -fx-text-fill: #F5F4F0;
+}
+
+.cell-audit-notes {
+    -fx-text-fill: #C5C9BF;
+}
+
+.cell-muted {
+    -fx-text-fill: #6E7268;
 }
 
 /* Event Type tags */
@@ -609,6 +662,13 @@
     -fx-text-fill: #D68A5D;
 }
 
+/* ==================== Tooltip Styling (Dark) ==================== */
+.tooltip {
+    -fx-background-color: #1A1D1A;
+    -fx-text-fill: #E6E7E3;
+    -fx-border-color: #383E38;
+}
+
 /* ==================== Modal Forms & Dialogs (Dark) ==================== */
 .stockpilot-dialog {
     -fx-background-color: #252925;
@@ -626,6 +686,96 @@
     -fx-font-weight: bold;
 }
 
+.stockpilot-dialog .content {
+    -fx-background-color: #252925;
+}
+
+.stockpilot-dialog .form-label,
+.stockpilot-dialog .label {
+    -fx-text-fill: #E6E7E3;
+}
+
+.stockpilot-dialog .dialog-helper-label {
+    -fx-text-fill: #A6AAA0;
+}
+
+.stockpilot-dialog .text-field,
+.stockpilot-dialog .text-area {
+    -fx-background-color: #1E221E;
+    -fx-text-fill: #E6E7E3;
+    -fx-prompt-text-fill: #787D75;
+    -fx-border-color: #383E38;
+    -fx-highlight-fill: #D68A5D;
+    -fx-highlight-text-fill: #111310;
+}
+
+.stockpilot-dialog .text-field:focused,
+.stockpilot-dialog .text-area:focused {
+    -fx-border-color: #D68A5D;
+    -fx-background-color: #202520;
+}
+
+.stockpilot-dialog .combo-box {
+    -fx-background-color: #1E221E;
+    -fx-border-color: #383E38;
+}
+
+.stockpilot-dialog .combo-box:focused {
+    -fx-border-color: #D68A5D;
+}
+
+.stockpilot-dialog .combo-box .cell,
+.stockpilot-dialog .combo-box .list-cell {
+    -fx-text-fill: #E6E7E3;
+    -fx-background-color: transparent;
+}
+
+.stockpilot-dialog .combo-box .arrow-button .arrow {
+    -fx-background-color: #A6AAA0;
+}
+
+.stockpilot-dialog .combo-box .text-field {
+    -fx-background-color: #1E221E;
+    -fx-text-fill: #E6E7E3;
+    -fx-prompt-text-fill: #787D75;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #1E221E;
+    -fx-border-color: #383E38;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 8, 0, 0, 4);
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: #1E221E;
+    -fx-text-fill: #E6E7E3;
+    -fx-padding: 6 10 6 10;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #2E332E;
+    -fx-text-fill: #FFFFFF;
+}
+
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: #D68A5D;
+    -fx-text-fill: #111310;
+}
+
+.stockpilot-dialog > .button-bar {
+    -fx-background-color: #1E221E;
+    -fx-border-color: #333833 transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 8 16 8 16;
+}
+
+.stockpilot-dialog .content.label,
+.stockpilot-dialog .content > .label {
+    -fx-text-fill: #E6E7E3;
+}
+
 .dialog-error-label {
     -fx-text-fill: #E45B4D;
+    -fx-font-weight: bold;
 }

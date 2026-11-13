@@ -393,11 +393,18 @@
 /* ==================== Activity Table ==================== */
 .activity-table {
     -fx-background-color: #FFFFFF;
+    -fx-table-cell-border-color: transparent;
 }
 
 .activity-table .column-header-background {
     -fx-background-color: #F3F1EC;
     -fx-border-color: #E3E1DA;
+}
+
+.activity-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #E3E1DA transparent;
+    -fx-border-width: 0 0 1 0;
 }
 
 .activity-table .column-header .label {
@@ -407,6 +414,7 @@
 .activity-table .table-row-cell {
     -fx-background-color: #FFFFFF;
     -fx-border-color: #ECEAE4;
+    -fx-border-width: 0 0 1 0;
 }
 
 .activity-table .table-row-cell:hover {
@@ -417,12 +425,57 @@
     -fx-background-color: #F4EFEA;
 }
 
+.activity-table .table-cell {
+    -fx-text-fill: #242522;
+    -fx-border-color: transparent;
+}
+
 .cell-timestamp {
-    -fx-text-fill: #6D7067;
+    -fx-text-fill: #5F6259;
 }
 
 .cell-item-name {
     -fx-text-fill: #242522;
+}
+
+.cell-sku {
+    -fx-text-fill: #242522;
+}
+
+.cell-numeric {
+    -fx-text-fill: #242522;
+}
+
+.cell-numeric-muted {
+    -fx-text-fill: #777970;
+}
+
+.cell-currency {
+    -fx-text-fill: #242522;
+}
+
+.cell-qty-in {
+    -fx-text-fill: #27683C;
+}
+
+.cell-qty-out {
+    -fx-text-fill: #C8784B;
+}
+
+.cell-stock-prev {
+    -fx-text-fill: #777970;
+}
+
+.cell-stock-balance {
+    -fx-text-fill: #111310;
+}
+
+.cell-audit-notes {
+    -fx-text-fill: #3D4038;
+}
+
+.cell-muted {
+    -fx-text-fill: #A0A39B;
 }
 
 /* Event Type tags */
@@ -609,6 +662,13 @@
     -fx-text-fill: #242522;
 }
 
+/* ==================== Tooltip Styling (Light) ==================== */
+.tooltip {
+    -fx-background-color: #242522;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #383E38;
+}
+
 /* ==================== Modal Forms & Dialogs (Light) ==================== */
 .stockpilot-dialog {
     -fx-background-color: #FAF9F5;
@@ -626,6 +686,96 @@
     -fx-font-weight: bold;
 }
 
+.stockpilot-dialog .content {
+    -fx-background-color: #FAF9F5;
+}
+
+.stockpilot-dialog .form-label,
+.stockpilot-dialog .label {
+    -fx-text-fill: #242522;
+}
+
+.stockpilot-dialog .dialog-helper-label {
+    -fx-text-fill: #5F6259;
+}
+
+.stockpilot-dialog .text-field,
+.stockpilot-dialog .text-area {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #242522;
+    -fx-prompt-text-fill: #95978F;
+    -fx-border-color: #DFDDD5;
+    -fx-highlight-fill: #C8784B;
+    -fx-highlight-text-fill: #FFFFFF;
+}
+
+.stockpilot-dialog .text-field:focused,
+.stockpilot-dialog .text-area:focused {
+    -fx-border-color: #C8784B;
+    -fx-background-color: #FFFFFF;
+}
+
+.stockpilot-dialog .combo-box {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #DFDDD5;
+}
+
+.stockpilot-dialog .combo-box:focused {
+    -fx-border-color: #C8784B;
+}
+
+.stockpilot-dialog .combo-box .cell,
+.stockpilot-dialog .combo-box .list-cell {
+    -fx-text-fill: #242522;
+    -fx-background-color: transparent;
+}
+
+.stockpilot-dialog .combo-box .arrow-button .arrow {
+    -fx-background-color: #777970;
+}
+
+.stockpilot-dialog .combo-box .text-field {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #242522;
+    -fx-prompt-text-fill: #95978F;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #DFDDD5;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 4);
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #242522;
+    -fx-padding: 6 10 6 10;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #F3F1EC;
+    -fx-text-fill: #242522;
+}
+
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: #C8784B;
+    -fx-text-fill: #FFFFFF;
+}
+
+.stockpilot-dialog > .button-bar {
+    -fx-background-color: #F3F1EC;
+    -fx-border-color: #E3E1DA transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 8 16 8 16;
+}
+
+.stockpilot-dialog .content.label,
+.stockpilot-dialog .content > .label {
+    -fx-text-fill: #242522;
+}
+
 .dialog-error-label {
     -fx-text-fill: #BA3D30;
+    -fx-font-weight: bold;
 }

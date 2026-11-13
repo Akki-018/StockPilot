@@ -14,6 +14,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
@@ -21,6 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -188,22 +190,25 @@ public class ProductController {
     private TableView<Product> buildTableView() {
         TableView<Product> table = new TableView<>(productList);
         table.getStyleClass().add("activity-table");
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
+        table.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
         table.setPlaceholder(new Label("No products match the selected search or filter criteria."));
 
         // Column 1: SKU
         TableColumn<Product, String> skuCol = new TableColumn<>("SKU");
         skuCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getSku()));
-        skuCol.setMinWidth(120);
+        skuCol.setMinWidth(110);
+        skuCol.setPrefWidth(130);
         skuCol.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String sku, boolean empty) {
                 super.updateItem(sku, empty);
                 if (empty || sku == null) {
                     setText(null);
+                    setTooltip(null);
                 } else {
                     setText(sku);
                     getStyleClass().add("cell-sku");
+                    setTooltip(new Tooltip("SKU: " + sku));
                 }
             }
         });
@@ -211,16 +216,19 @@ public class ProductController {
         // Column 2: Product Name
         TableColumn<Product, String> nameCol = new TableColumn<>("PRODUCT NAME");
         nameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getName()));
-        nameCol.setMinWidth(180);
+        nameCol.setMinWidth(170);
+        nameCol.setPrefWidth(220);
         nameCol.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String name, boolean empty) {
                 super.updateItem(name, empty);
                 if (empty || name == null) {
                     setText(null);
+                    setTooltip(null);
                 } else {
                     setText(name);
                     getStyleClass().add("cell-item-name");
+                    setTooltip(new Tooltip(name));
                 }
             }
         });
@@ -228,7 +236,8 @@ public class ProductController {
         // Column 3: Category
         TableColumn<Product, String> catCol = new TableColumn<>("CATEGORY");
         catCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getCategory()));
-        catCol.setMinWidth(110);
+        catCol.setMinWidth(100);
+        catCol.setPrefWidth(125);
         catCol.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String cat, boolean empty) {
@@ -248,19 +257,46 @@ public class ProductController {
         // Column 4: Quantity
         TableColumn<Product, Integer> qtyCol = new TableColumn<>("QTY");
         qtyCol.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().getQuantity()));
-        qtyCol.setMinWidth(75);
+        qtyCol.setMinWidth(65);
+        qtyCol.setPrefWidth(75);
         qtyCol.setStyle("-fx-alignment: CENTER_RIGHT;");
+        qtyCol.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(Integer qty, boolean empty) {
+                super.updateItem(qty, empty);
+                if (empty || qty == null) {
+                    setText(null);
+                } else {
+                    setText(String.valueOf(qty));
+                    getStyleClass().add("cell-numeric");
+                }
+            }
+        });
 
         // Column 5: Min Stock Threshold
         TableColumn<Product, Integer> minStockCol = new TableColumn<>("MIN");
         minStockCol.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().getMinimumStock()));
-        minStockCol.setMinWidth(75);
+        minStockCol.setMinWidth(65);
+        minStockCol.setPrefWidth(75);
         minStockCol.setStyle("-fx-alignment: CENTER_RIGHT;");
+        minStockCol.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(Integer min, boolean empty) {
+                super.updateItem(min, empty);
+                if (empty || min == null) {
+                    setText(null);
+                } else {
+                    setText(String.valueOf(min));
+                    getStyleClass().add("cell-numeric-muted");
+                }
+            }
+        });
 
         // Column 6: Unit Price
         TableColumn<Product, BigDecimal> priceCol = new TableColumn<>("PRICE");
         priceCol.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().getUnitPrice()));
-        priceCol.setMinWidth(90);
+        priceCol.setMinWidth(80);
+        priceCol.setPrefWidth(95);
         priceCol.setStyle("-fx-alignment: CENTER_RIGHT;");
         priceCol.setCellFactory(col -> new TableCell<>() {
             @Override
@@ -270,6 +306,7 @@ public class ProductController {
                     setText(null);
                 } else {
                     setText(currencyFormatter.format(price));
+                    getStyleClass().add("cell-currency");
                 }
             }
         });
@@ -277,7 +314,8 @@ public class ProductController {
         // Column 7: Total Value
         TableColumn<Product, BigDecimal> valCol = new TableColumn<>("TOTAL VAL");
         valCol.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().getTotalValuation()));
-        valCol.setMinWidth(100);
+        valCol.setMinWidth(90);
+        valCol.setPrefWidth(110);
         valCol.setStyle("-fx-alignment: CENTER_RIGHT;");
         valCol.setCellFactory(col -> new TableCell<>() {
             @Override
@@ -287,6 +325,7 @@ public class ProductController {
                     setText(null);
                 } else {
                     setText(currencyFormatter.format(val));
+                    getStyleClass().add("cell-currency");
                 }
             }
         });
@@ -294,7 +333,8 @@ public class ProductController {
         // Column 8: Status
         TableColumn<Product, String> statusCol = new TableColumn<>("STATUS");
         statusCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getStockStatus()));
-        statusCol.setMinWidth(105);
+        statusCol.setMinWidth(100);
+        statusCol.setPrefWidth(115);
         statusCol.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String status, boolean empty) {
@@ -319,7 +359,9 @@ public class ProductController {
 
         // Column 9: Actions (Edit / Delete)
         TableColumn<Product, Void> actionCol = new TableColumn<>("ACTIONS");
-        actionCol.setMinWidth(130);
+        actionCol.setMinWidth(155);
+        actionCol.setPrefWidth(165);
+        actionCol.setResizable(false);
         actionCol.setCellFactory(col -> new TableCell<>() {
             private final Button editBtn = new Button("Edit");
             private final Button deleteBtn = new Button("Delete");
@@ -328,7 +370,11 @@ public class ProductController {
             {
                 editBtn.getStyleClass().add("btn-table-edit");
                 deleteBtn.getStyleClass().add("btn-table-delete");
+                editBtn.setMinWidth(Region.USE_PREF_SIZE);
+                deleteBtn.setMinWidth(Region.USE_PREF_SIZE);
                 btnGroup.setAlignment(Pos.CENTER);
+                setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                setAlignment(Pos.CENTER);
 
                 editBtn.setOnAction(e -> {
                     Product prod = getTableView().getItems().get(getIndex());
@@ -437,6 +483,15 @@ public class ProductController {
 
         // Apply active theme to confirmation dialog
         applyDialogTheme(alert.getDialogPane());
+        Button okBtn = (Button) alert.getDialogPane().lookupButton(ButtonType.OK);
+        if (okBtn != null) {
+            okBtn.setText("Delete Product");
+            okBtn.getStyleClass().add("btn-table-delete");
+        }
+        Button cancelBtn = (Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL);
+        if (cancelBtn != null) {
+            cancelBtn.getStyleClass().add("btn-secondary");
+        }
 
         Optional<ButtonType> response = alert.showAndWait();
         if (response.isPresent() && response.get() == ButtonType.OK) {
@@ -521,6 +576,15 @@ public class ProductController {
             descriptionArea.setPrefRowCount(3);
             descriptionArea.setWrapText(true);
 
+            // Prompt texts for clean placeholder contrast
+            skuField.setPromptText("e.g. PRD-1001");
+            nameField.setPromptText("e.g. High-Torque Stepper Motor");
+            categoryCombo.setPromptText("Select or enter category...");
+            quantityField.setPromptText("e.g. 50");
+            minStockField.setPromptText("e.g. 10");
+            unitPriceField.setPromptText("e.g. 49.99");
+            descriptionArea.setPromptText("Optional specifications, supplier reference, or notes...");
+
             validationErrorLabel.getStyleClass().add("dialog-error-label");
             validationErrorLabel.setVisible(false);
             validationErrorLabel.setManaged(false);
@@ -531,25 +595,25 @@ public class ProductController {
             grid.setPadding(new Insets(16, 20, 16, 20));
 
             int row = 0;
-            grid.add(new Label("SKU Code:*"), 0, row);
+            grid.add(createFormLabel("SKU Code:*"), 0, row);
             grid.add(skuField, 1, row++);
 
-            grid.add(new Label("Product Name:*"), 0, row);
+            grid.add(createFormLabel("Product Name:*"), 0, row);
             grid.add(nameField, 1, row++);
 
-            grid.add(new Label("Category:*"), 0, row);
+            grid.add(createFormLabel("Category:*"), 0, row);
             grid.add(categoryCombo, 1, row++);
 
-            grid.add(new Label("Quantity on Hand:*"), 0, row);
+            grid.add(createFormLabel("Quantity on Hand:*"), 0, row);
             grid.add(quantityField, 1, row++);
 
-            grid.add(new Label("Min. Stock Buffer:*"), 0, row);
+            grid.add(createFormLabel("Min. Stock Buffer:*"), 0, row);
             grid.add(minStockField, 1, row++);
 
-            grid.add(new Label("Unit Price ($):*"), 0, row);
+            grid.add(createFormLabel("Unit Price ($):*"), 0, row);
             grid.add(unitPriceField, 1, row++);
 
-            grid.add(new Label("Description:"), 0, row);
+            grid.add(createFormLabel("Description:"), 0, row);
             grid.add(descriptionArea, 1, row++);
 
             grid.add(validationErrorLabel, 0, row, 2, 1);
@@ -626,6 +690,12 @@ public class ProductController {
             }
 
             return null; // Valid
+        }
+
+        private static Label createFormLabel(String text) {
+            Label label = new Label(text);
+            label.getStyleClass().add("form-label");
+            return label;
         }
     }
 }

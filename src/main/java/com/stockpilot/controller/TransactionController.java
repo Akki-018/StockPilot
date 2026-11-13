@@ -24,6 +24,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -192,22 +193,25 @@ public class TransactionController {
     private TableView<Transaction> buildTableView() {
         TableView<Transaction> table = new TableView<>(transactionList);
         table.getStyleClass().add("activity-table");
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_FLEX_LAST_COLUMN);
+        table.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
         table.setPlaceholder(new Label("No inventory transactions match the selected criteria."));
 
         // Column 1: ID
         TableColumn<Transaction, String> idCol = new TableColumn<>("ID");
         idCol.setCellValueFactory(cell -> new SimpleStringProperty(String.format("#%03d", cell.getValue().getId())));
         idCol.setMinWidth(65);
+        idCol.setPrefWidth(75);
         idCol.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) {
                     setText(null);
+                    setTooltip(null);
                 } else {
                     setText(item);
                     getStyleClass().add("cell-sku");
+                    setTooltip(new Tooltip("Transaction ID: " + item));
                 }
             }
         });
@@ -216,15 +220,18 @@ public class TransactionController {
         TableColumn<Transaction, String> dateCol = new TableColumn<>("DATE & TIME");
         dateCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getTransactionDate()));
         dateCol.setMinWidth(140);
+        dateCol.setPrefWidth(155);
         dateCol.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) {
                     setText(null);
+                    setTooltip(null);
                 } else {
                     setText(item);
                     getStyleClass().add("cell-timestamp");
+                    setTooltip(new Tooltip("Timestamp: " + item));
                 }
             }
         });
@@ -232,16 +239,19 @@ public class TransactionController {
         // Column 3: SKU
         TableColumn<Transaction, String> skuCol = new TableColumn<>("SKU");
         skuCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getProductSku()));
-        skuCol.setMinWidth(120);
+        skuCol.setMinWidth(115);
+        skuCol.setPrefWidth(135);
         skuCol.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String sku, boolean empty) {
                 super.updateItem(sku, empty);
                 if (empty || sku == null) {
                     setText(null);
+                    setTooltip(null);
                 } else {
                     setText(sku);
                     getStyleClass().add("cell-sku");
+                    setTooltip(new Tooltip("Product SKU: " + sku));
                 }
             }
         });
@@ -250,15 +260,18 @@ public class TransactionController {
         TableColumn<Transaction, String> nameCol = new TableColumn<>("PRODUCT NAME");
         nameCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getProductName()));
         nameCol.setMinWidth(170);
+        nameCol.setPrefWidth(220);
         nameCol.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String name, boolean empty) {
                 super.updateItem(name, empty);
                 if (empty || name == null) {
                     setText(null);
+                    setTooltip(null);
                 } else {
                     setText(name);
                     getStyleClass().add("cell-item-name");
+                    setTooltip(new Tooltip(name));
                 }
             }
         });
@@ -266,7 +279,8 @@ public class TransactionController {
         // Column 5: Transaction Type
         TableColumn<Transaction, String> typeCol = new TableColumn<>("TYPE");
         typeCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getFormattedType()));
-        typeCol.setMinWidth(115);
+        typeCol.setMinWidth(110);
+        typeCol.setPrefWidth(125);
         typeCol.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(String type, boolean empty) {
@@ -276,7 +290,7 @@ public class TransactionController {
                     setText(null);
                     return;
                 }
-                Label tag = new Label(type);
+                Label tag = new Label();
                 tag.getStyleClass().add("action-tag");
                 if (type.contains("IN")) {
                     tag.setText("▲ " + type);
@@ -293,22 +307,24 @@ public class TransactionController {
         // Column 6: Quantity
         TableColumn<Transaction, Integer> qtyCol = new TableColumn<>("QTY");
         qtyCol.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().getQuantity()));
-        qtyCol.setMinWidth(75);
+        qtyCol.setMinWidth(70);
+        qtyCol.setPrefWidth(80);
         qtyCol.setStyle("-fx-alignment: CENTER_RIGHT;");
         qtyCol.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(Integer qty, boolean empty) {
                 super.updateItem(qty, empty);
+                getStyleClass().removeAll("cell-qty-in", "cell-qty-out");
                 if (empty || qty == null) {
                     setText(null);
                 } else {
                     Transaction tx = getTableRow() != null ? getTableRow().getItem() : null;
                     if (tx != null && tx.isStockIn()) {
                         setText("+" + qty);
-                        setStyle("-fx-alignment: CENTER_RIGHT; -fx-font-weight: bold; -fx-text-fill: #27683C;");
+                        getStyleClass().add("cell-qty-in");
                     } else {
                         setText("-" + qty);
-                        setStyle("-fx-alignment: CENTER_RIGHT; -fx-font-weight: bold; -fx-text-fill: #C8784B;");
+                        getStyleClass().add("cell-qty-out");
                     }
                 }
             }
@@ -318,18 +334,65 @@ public class TransactionController {
         TableColumn<Transaction, Integer> prevCol = new TableColumn<>("PREV");
         prevCol.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().getPreviousStock()));
         prevCol.setMinWidth(75);
+        prevCol.setPrefWidth(85);
         prevCol.setStyle("-fx-alignment: CENTER_RIGHT;");
+        prevCol.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(Integer prev, boolean empty) {
+                super.updateItem(prev, empty);
+                if (empty || prev == null) {
+                    setText(null);
+                    setTooltip(null);
+                } else {
+                    setText(String.valueOf(prev));
+                    getStyleClass().add("cell-stock-prev");
+                    setTooltip(new Tooltip("Previous stock: " + prev + " units"));
+                }
+            }
+        });
 
-        // Column 8: Resulting Stock
+        // Column 8: Resulting Stock / Balance
         TableColumn<Transaction, Integer> newCol = new TableColumn<>("BALANCE");
         newCol.setCellValueFactory(cell -> new SimpleObjectProperty<>(cell.getValue().getResultingStock()));
         newCol.setMinWidth(85);
-        newCol.setStyle("-fx-alignment: CENTER_RIGHT; -fx-font-weight: bold;");
+        newCol.setPrefWidth(95);
+        newCol.setStyle("-fx-alignment: CENTER_RIGHT;");
+        newCol.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(Integer balance, boolean empty) {
+                super.updateItem(balance, empty);
+                if (empty || balance == null) {
+                    setText(null);
+                    setTooltip(null);
+                } else {
+                    setText(String.valueOf(balance));
+                    getStyleClass().add("cell-stock-balance");
+                    setTooltip(new Tooltip("Ending inventory balance: " + balance + " units"));
+                }
+            }
+        });
 
-        // Column 9: Notes
+        // Column 9: Audit Notes
         TableColumn<Transaction, String> notesCol = new TableColumn<>("AUDIT NOTES");
         notesCol.setCellValueFactory(cell -> new SimpleStringProperty(cell.getValue().getNotes()));
         notesCol.setMinWidth(180);
+        notesCol.setPrefWidth(240);
+        notesCol.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(String notes, boolean empty) {
+                super.updateItem(notes, empty);
+                getStyleClass().removeAll("cell-audit-notes", "cell-muted");
+                if (empty || notes == null || notes.trim().isEmpty()) {
+                    setText("—");
+                    getStyleClass().add("cell-muted");
+                    setTooltip(null);
+                } else {
+                    setText(notes);
+                    getStyleClass().add("cell-audit-notes");
+                    setTooltip(new Tooltip(notes));
+                }
+            }
+        });
 
         table.getColumns().add(idCol);
         table.getColumns().add(dateCol);
@@ -478,7 +541,7 @@ public class TransactionController {
                 productCombo.setValue(products.get(0));
             }
 
-            currentStockLabel.getStyleClass().add("footer-spec");
+            currentStockLabel.getStyleClass().addAll("footer-spec", "dialog-helper-label");
 
             quantityField.setPromptText("Units to " + (isStockIn ? "receive" : "issue") + " (e.g. 10)");
 
@@ -496,16 +559,16 @@ public class TransactionController {
             grid.setPadding(new Insets(16, 20, 16, 20));
 
             int row = 0;
-            grid.add(new Label("Target Product:*"), 0, row);
+            grid.add(createFormLabel("Target Product:*"), 0, row);
             grid.add(productCombo, 1, row++);
 
-            grid.add(new Label("Current Stock:"), 0, row);
+            grid.add(createFormLabel("Current Stock:"), 0, row);
             grid.add(currentStockLabel, 1, row++);
 
-            grid.add(new Label(isStockIn ? "Quantity Received:* " : "Quantity Issued:* "), 0, row);
+            grid.add(createFormLabel(isStockIn ? "Quantity Received:* " : "Quantity Issued:* "), 0, row);
             grid.add(quantityField, 1, row++);
 
-            grid.add(new Label("Audit Notes:"), 0, row);
+            grid.add(createFormLabel("Audit Notes:"), 0, row);
             grid.add(notesArea, 1, row++);
 
             grid.add(errorLabel, 0, row, 2, 1);
@@ -564,6 +627,12 @@ public class TransactionController {
             errorLabel.setText("⚠ " + msg);
             errorLabel.setVisible(true);
             errorLabel.setManaged(true);
+        }
+
+        private static Label createFormLabel(String text) {
+            Label label = new Label(text);
+            label.getStyleClass().add("form-label");
+            return label;
         }
     }
 }
