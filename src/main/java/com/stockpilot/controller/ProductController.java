@@ -65,22 +65,13 @@ public class ProductController {
         root.getStyleClass().add("content-container");
         root.setPadding(new Insets(22, 26, 26, 26));
 
-        // 1. Header with Title and Primary Actions
         HBox header = buildHeader();
-
-        // 2. Notification / Feedback Banner (Hidden by default)
         notificationBanner = buildNotificationBanner();
-
-        // 3. Filter and Search Toolbar
         HBox filterToolbar = buildFilterToolbar();
-
-        // 4. Products TableView
         tableView = buildTableView();
         VBox.setVgrow(tableView, Priority.ALWAYS);
 
         root.getChildren().addAll(header, notificationBanner, filterToolbar, tableView);
-
-        // Initial Data Load
         refreshData();
 
         return root;

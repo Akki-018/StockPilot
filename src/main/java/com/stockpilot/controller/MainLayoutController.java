@@ -263,18 +263,10 @@ public class MainLayoutController {
         if (lightThemeBtn == null || darkThemeBtn == null) {
             return;
         }
-
-        if (theme == ThemeManager.Theme.LIGHT) {
-            if (!lightThemeBtn.getStyleClass().contains("theme-toggle-active")) {
-                lightThemeBtn.getStyleClass().add("theme-toggle-active");
-            }
-            darkThemeBtn.getStyleClass().remove("theme-toggle-active");
-        } else {
-            if (!darkThemeBtn.getStyleClass().contains("theme-toggle-active")) {
-                darkThemeBtn.getStyleClass().add("theme-toggle-active");
-            }
-            lightThemeBtn.getStyleClass().remove("theme-toggle-active");
-        }
+        boolean isLight = (theme == ThemeManager.Theme.LIGHT);
+        lightThemeBtn.getStyleClass().remove("theme-toggle-active");
+        darkThemeBtn.getStyleClass().remove("theme-toggle-active");
+        (isLight ? lightThemeBtn : darkThemeBtn).getStyleClass().add("theme-toggle-active");
     }
 
     private void navigateTo(String viewKey, String subtitle) {
@@ -289,11 +281,11 @@ public class MainLayoutController {
             topBarSubtitle.setText(subtitle);
         }
 
-        for (Map.Entry<String, Button> entry : navigationButtons.entrySet()) {
-            entry.getValue().getStyleClass().remove("nav-button-active");
-            if (entry.getKey().equals(viewKey)) {
-                entry.getValue().getStyleClass().add("nav-button-active");
+        navigationButtons.forEach((key, button) -> {
+            button.getStyleClass().remove("nav-button-active");
+            if (key.equals(viewKey)) {
+                button.getStyleClass().add("nav-button-active");
             }
-        }
+        });
     }
 }

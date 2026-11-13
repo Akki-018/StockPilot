@@ -78,13 +78,9 @@ public class DashboardDao {
         List<ActivityItem> activityItems = new ArrayList<>();
 
         for (Transaction tx : recentTx) {
-            String time = tx.getTransactionDate();
             String action = tx.isStockIn() ? "Stock In" : "Stock Out";
             String itemDesc = tx.getProductName() + " (" + tx.getProductSku() + ")";
-            String delta = tx.getFormattedDelta();
-            String status = "Completed";
-
-            activityItems.add(new ActivityItem(time, action, itemDesc, delta, status));
+            activityItems.add(new ActivityItem(tx.getTransactionDate(), action, itemDesc, tx.getFormattedDelta(), "Completed"));
         }
 
         return activityItems;
